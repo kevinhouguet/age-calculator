@@ -1,6 +1,8 @@
 @font-face {
   font-family: 'Poppins';
-  src: url(./assets/fonts/Poppins-Regular.ttf) format('truetype'); /* 400i */
+  src: url(./assets/fonts/Poppins-Regular.ttf) format('truetype'), /* 400i */
+  url(./assets/fonts/Poppins-BoldItalic.ttf) format('truetype'), /* 800i */
+  url(./assets/fonts/Poppins-Italic.ttf) format('truetype'); /* 700 */
 }
 
 :root {
