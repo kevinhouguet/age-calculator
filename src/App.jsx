@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  document.title = 'Age Calculator'
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className='container'>
+      <form action="#">
+        <div className="form__groupform">
+          <label htmlFor="day">Day</label>
+          <input type="number" name="day" id="day" min="1" max="31" placeholder='DD'/>
+        </div>
+        <div className="form__groupform">
+          <label htmlFor="month">Month</label>
+          <input type="number" name="month" id="month" min="1" max="12" placeholder='MM'/>
+        </div>
+        <div className="form__groupform">
+          <label htmlFor="year">Year</label>
+          <input type="number" name="year" id="year" min="1900" max="2023" placeholder='YYYY'/>
+        </div>
+        <div className="button__container">
+          <button className="btn">Calculate</button>          
+        </div>
+      </form>
+      <div className="result__content">
+        <div className="result__content__years">
+          <span className="result__content__years__nb">--</span> years
+        </div>
+        <div className="result__content__month">
+          <span className="result__content__months__nb">--</span> months
+        </div>
+        <div className="result__content__days">
+          <span className="result__content__days__nb">--</span> days
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <footer className="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend Mentor</a>. 
+        Coded by <a href="#">Your Name Here</a>.
+      </footer>
+    </main>
   )
 }
 
