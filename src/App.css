@@ -4,3 +4,10 @@
     border-radius: 20px 20px 70px 20px;
     width: 350px;
 }
+
+footer{
+    text-align: center;
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0;
+}

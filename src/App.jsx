@@ -2,6 +2,7 @@ import './App.css'
 import Form from './Components/Form'
 import Result from './Components/Result'
 import { useState } from 'react'
+import dayjs from 'dayjs';
 
 const App = () => {
 
@@ -19,32 +20,26 @@ const App = () => {
   }
 
   const calculateAge = (day, month, year) => {
-    const today = new Date()
-    const birthDate = new Date(year, month - 1, day)
+    const birthDate = new Date(year, month, day)
 
-    // getFullYear() returns the year of the specified date.
-    let age = today.getFullYear() - birthDate.getFullYear()
-    const m = today.getMonth() - birthDate.getMonth()
+    setYear(Math.round(dayjs().diff(dayjs(birthDate), 'month', true) / 12))
+    setMonth(Math.round(dayjs().diff(dayjs(birthDate), 'month', true) % 12))
+    setDay(Math.floor(dayjs().diff(dayjs(birthDate), 'day', true) % 31))
 
-    // If the date of birth is greater than the current date of birth, the age is reduced by 1.
-    // It is because the current date of birth has not yet been reached.
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--
-
-    setDay(birthDate.getDate())
-    setMonth(birthDate.getMonth() + 1)
-    setYear(age)
   }
 
   return (
-    <main className='container'>
-      <Form onSubmit={handleSubmitForm}/>
-      <Result days={days} months={months} years={years}/>
+    <>
+      <main className='container'>
+        <Form onSubmit={handleSubmitForm}/>
+        <Result days={days} months={months} years={years}/>
 
-      {/* <footer className="attribution">
+      </main>
+      <footer className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend Mentor</a>. 
         Coded by <a href="#">Your Name Here</a>.
-      </footer> */}
-    </main>
+      </footer>
+    </>
   )
 }
 

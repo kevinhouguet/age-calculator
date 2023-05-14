@@ -54,5 +54,10 @@
         height: 2rem;
       }
     }
+
+    &__button:hover {
+      background-color: var(--neutral-off-black);
+      cursor: pointer;
+    }
   }
 }
