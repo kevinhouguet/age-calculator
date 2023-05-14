@@ -1,4 +1,5 @@
 import './style.scss'
+import PropTypes from 'prop-types';
 
 /**
  * Input component
@@ -44,3 +45,14 @@ const Form = ({onSubmit}) => {
 }
 
 export default Form;
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+}
+
+Input.propTypes = {
+  period: PropTypes.string.isRequired,
+  min: PropTypes.string.isRequired,
+  max: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired
+}

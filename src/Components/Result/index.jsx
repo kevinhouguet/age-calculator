@@ -1,4 +1,5 @@
 import './style.scss'
+import { PropTypes } from 'prop-types';
 
 const Result = ({days,months,years}) => {
 
@@ -18,3 +19,9 @@ const Result = ({days,months,years}) => {
 }
 
 export default Result;
+
+Result.propTypes = {
+  days: PropTypes.string.isRequired,
+  months: PropTypes.string.isRequired,
+  years: PropTypes.string.isRequired,
+}
