@@ -3,6 +3,8 @@ import Form from './Components/Form'
 import Result from './Components/Result'
 import { useState } from 'react'
 import dayjs from 'dayjs';
+import customParseFormat from'dayjs/plugin/customParseFormat'
+dayjs.extend(customParseFormat)
 
 const App = () => {
 
@@ -12,6 +14,7 @@ const App = () => {
   const [months, setMonth] = useState('--')
   const [years, setYear] = useState('--')
   const [error, setError] = useState('')
+  const maxYear = dayjs().format('YYYY')
 
   const handleSubmitForm = (e) => {    
     e.preventDefault()
@@ -37,13 +40,17 @@ const App = () => {
     } else {
       setError('')
     }
+
+    if(!dayjs(`${year}-${month}-${day}`, 'YYYY-MM-DD', true).isValid()){
+      setError('Please enter a valid date')
+    }
   }
 
   return (
     <>
       <main className='container'>
-        <Form onSubmit={handleSubmitForm} error={error}/>
-        <Result days={days} months={months} years={years}/>
+        <Form onSubmit={handleSubmitForm} error={error} maxYear={maxYear}/>
+        <Result days={days.toString()} months={months.toString()} years={years.toString()}/>
 
       </main>
       <footer className="attribution">

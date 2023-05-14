@@ -21,7 +21,7 @@ const Result = ({days,months,years}) => {
 export default Result;
 
 Result.propTypes = {
-  days: PropTypes.number.isRequired,
-  months: PropTypes.number.isRequired,
-  years: PropTypes.number.isRequired,
+  days: PropTypes.string.isRequired,
+  months: PropTypes.string.isRequired,
+  years: PropTypes.string.isRequired,
 }

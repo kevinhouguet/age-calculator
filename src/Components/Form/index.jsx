@@ -23,14 +23,14 @@ const Input = ({period,min,max,placeholder}) => {
   )
 }
 
-const Form = ({onSubmit, error}) => {
+const Form = ({onSubmit, error, maxYear}) => {
 
   return (
     <form action="#" className='form' onSubmit={onSubmit}>
       <div className="form__content">
         <Input period='day' min='1' max='31' placeholder='DD'/>
         <Input period='month' min='1' max='12' placeholder='MM'/>
-        <Input period='year' min='1900' max='2023' placeholder='YYYY'/>
+        <Input period='year' min='1900' max={maxYear} placeholder='YYYY'/>
       </div>
       {error && <p className='form__error'>{error}</p>}
       <div className="form__submit">
