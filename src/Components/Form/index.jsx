@@ -1,29 +1,30 @@
 import './style.scss'
 
-const Form = () => {
+/**
+ * Input component
+ * @param {string} period - day, month, year
+ * @returns {HTMLElement} - Html input element
+ */
+const Input = ({period,min,max,placeholder}) => {
+  return (
+    <div className="form__content__groupform">
+      <label htmlFor={period}>{period}</label>
+      <input 
+        className='form__content__input'
+        type="number" name={period} id={period} min={min} max={max} placeholder={placeholder}
+      />
+    </div>
+  )
+}
+
+const Form = ({onSubmit}) => {
 
   return (
-    <form action="#" className='form'>
+    <form action="#" className='form' onSubmit={onSubmit}>
       <div className="form__content">
-        <div className="form__content__groupform">
-          <label htmlFor="day">Day</label>
-          <input 
-            className='form__content__input'
-            type="number" name="day" id="day" min="1" max="31" placeholder='DD'
-          />
-        </div>
-        <div className="form__content__groupform">
-          <label htmlFor="month">Month</label>
-          <input 
-            className='form__content__input'
-            type="number" name="month" id="month" min="1" max="12" placeholder='MM'/>
-        </div>
-        <div className="form__content__groupform">
-          <label htmlFor="year">Year</label>
-          <input 
-            className='form__content__input'
-            type="number" name="year" id="year" min="1900" max="2023" placeholder='YYYY'/>
-        </div>
+        <Input period='day' min='1' max='31' placeholder='DD'/>
+        <Input period='month' min='1' max='12' placeholder='MM'/>
+        <Input period='year' min='1900' max='2023' placeholder='YYYY'/>
       </div>
       <div className="form__submit">
         <button 

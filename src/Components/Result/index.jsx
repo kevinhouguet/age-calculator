@@ -1,11 +1,7 @@
 import './style.scss'
 import { useState } from 'react';
 
-const Result = () => {
-
-  const [days, setDay] = useState('--')
-  const [months, setMonth] = useState('--')
-  const [years, setYear] = useState('38')
+const Result = ({days,months,years}) => {
 
   return (
     <div className="result__content">
