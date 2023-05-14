@@ -1,9 +1,17 @@
 .result__content {
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 800;
   font-style: italic;
+  line-height: 3rem;
 
   span {
     color: var(--primary-purple);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .result__content {
+    font-size: 4rem;
+    line-height: 4rem;
   }
 }
