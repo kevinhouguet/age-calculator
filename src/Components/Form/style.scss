@@ -29,6 +29,9 @@
     &__input::placeholder {
       color: var(--neutral-light-gray);
     }
+    &__input:focus-visible {
+      outline: var(--primary-purple) auto 1px;
+    }
   }
 
   &__submit {
