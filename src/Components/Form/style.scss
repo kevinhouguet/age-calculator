@@ -68,3 +68,21 @@
     font-size: 0.7rem;
   }
 }
+
+@media screen and (min-width: 900px) {
+  .form {
+    margin-bottom: 1rem;
+
+    &__content {
+      width: 70%;
+      margin-bottom: -2rem;
+    }
+
+    &__submit {
+      &__button {
+        right: 0;
+      }
+    }
+
+  }
+}
