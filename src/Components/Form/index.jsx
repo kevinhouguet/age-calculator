@@ -53,7 +53,9 @@ const Form = ({onSubmit, error, maxYear}) => {
 export default Form;
 
 Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  maxYear: PropTypes.string.isRequired
 }
 
 Input.propTypes = {
