@@ -60,4 +60,11 @@
       cursor: pointer;
     }
   }
+
+  &__error {
+    position: absolute;
+    bottom: 2rem;
+    color: red;
+    font-size: 0.7rem;
+  }
 }

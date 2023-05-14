@@ -11,9 +11,12 @@ const App = () => {
   const [days, setDay] = useState('--')
   const [months, setMonth] = useState('--')
   const [years, setYear] = useState('--')
+  const [error, setError] = useState('')
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e) => {    
     e.preventDefault()
+    // TODO : validate input
+    validateInput(e.target.day.value, e.target.month.value, e.target.year.value)
 
     // TODO : calculate age from input
     calculateAge(e.target.day.value, e.target.month.value, e.target.year.value)
@@ -28,10 +31,18 @@ const App = () => {
 
   }
 
+  const validateInput = (day, month, year) => {
+    if(day === '' || month === '' || year === ''){
+      setError('Please fill all the fields')
+    } else {
+      setError('')
+    }
+  }
+
   return (
     <>
       <main className='container'>
-        <Form onSubmit={handleSubmitForm}/>
+        <Form onSubmit={handleSubmitForm} error={error}/>
         <Result days={days} months={months} years={years}/>
 
       </main>

@@ -12,13 +12,18 @@ const Input = ({period,min,max,placeholder}) => {
       <label htmlFor={period}>{period}</label>
       <input 
         className='form__content__input'
-        type="number" name={period} id={period} min={min} max={max} placeholder={placeholder}
+        type="number" 
+        name={period} 
+        id={period} 
+        min={min} 
+        max={max} 
+        placeholder={placeholder}
       />
     </div>
   )
 }
 
-const Form = ({onSubmit}) => {
+const Form = ({onSubmit, error}) => {
 
   return (
     <form action="#" className='form' onSubmit={onSubmit}>
@@ -27,6 +32,7 @@ const Form = ({onSubmit}) => {
         <Input period='month' min='1' max='12' placeholder='MM'/>
         <Input period='year' min='1900' max='2023' placeholder='YYYY'/>
       </div>
+      {error && <p className='form__error'>{error}</p>}
       <div className="form__submit">
         <button 
           className="form__submit__button"
