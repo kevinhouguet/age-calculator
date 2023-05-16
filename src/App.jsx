@@ -13,16 +13,18 @@ const App = () => {
   const [days, setDay] = useState('--')
   const [months, setMonth] = useState('--')
   const [years, setYear] = useState('--')
-  const [error, setError] = useState('')
+  const [error, setError] = useState([{}])
   const maxYear = dayjs().format('YYYY')
 
   const handleSubmitForm = (e) => {    
     e.preventDefault()
     // TODO : validate input
-    validateInput(e.target.day.value, e.target.month.value, e.target.year.value)
+    const validate = validateInput(e.target.day.value, e.target.month.value, e.target.year.value)
 
-    // TODO : calculate age from input
-    calculateAge(e.target.day.value, e.target.month.value, e.target.year.value)
+    if(validate === true){
+      // TODO : calculate age from input
+      calculateAge(e.target.day.value, e.target.month.value, e.target.year.value)
+    }
   }
 
   const calculateAge = (day, month, year) => {
@@ -35,14 +37,51 @@ const App = () => {
   }
 
   const validateInput = (day, month, year) => {
-    if(day === '' || month === '' || year === ''){
-      setError('Please fill all the fields')
-    } else {
-      setError('')
+    const errorTemp = []
+
+    if(day === ''){
+      errorTemp.push({message: 'This field is required', field: 'day'})
+    }
+    if(month === ''){
+      errorTemp.push({message: 'This field is required', field: 'month'})
+    }
+    if(year === ''){
+      errorTemp.push({message: 'This field is required', field: 'year'})
+    }
+    
+    
+
+    if(day){
+      if(day < 1 || day > 31){
+        errorTemp.push({message: 'Must be a valid day', field: 'day'})
+      }
+    }
+    if(month){
+      if(month < 1 || month > 12){
+        errorTemp.push({message: 'Must be a valid month', field: 'month'})
+      }
+    }
+    if(year){
+      if(year < 1900 || year > maxYear){
+        errorTemp.push({message: 'Must be a valid year', field: 'year'})
+      }
+    }
+    if(!errorTemp.some(err => err.field === 'day') && !errorTemp.some(err => err.field === 'month')){
+      if(day && month && year && !dayjs(`${year}-${month}-${day}`, 'YYYY-MM-DD', true).isValid()){
+        errorTemp.push({message: 'Must be a valid date', field: 'day'})
+      }
     }
 
-    if(!dayjs(`${year}-${month}-${day}`, 'YYYY-MM-DD', true).isValid()){
-      setError('Please enter a valid date')
+    
+    if(errorTemp.length > 0){
+      setError(errorTemp)
+      setDay('--')
+      setMonth('--')
+      setYear('--')
+      return false
+    } else {
+      setError([{}])
+      return true
     }
   }
 
